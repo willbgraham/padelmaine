@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
     await resend.emails.send({
       from: "Maine Padel <info@padelmaine.com>",
-      to: [process.env.CONTACT_EMAIL || "invest@mainepadel.com"],
+      to: [process.env.CONTACT_EMAIL || "william@padelmaine.com"],
       replyTo: email,
       subject: `New Inquiry — ${name}${organization ? ` (${organization})` : ""}`,
       html: `

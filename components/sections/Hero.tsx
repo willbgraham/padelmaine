@@ -31,7 +31,7 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
         variants={heroStaggerVariants}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+        className="relative z-10 text-center px-6 max-w-5xl mx-auto pt-24 md:pt-0"
       >
         <motion.p
           variants={heroFadeVariants}
@@ -42,7 +42,7 @@ export default function Hero() {
 
         <motion.h1
           variants={heroFadeVariants}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-cream leading-[0.95] tracking-tight"
+          className="font-display text-4xl md:text-7xl lg:text-8xl font-bold text-cream leading-[0.95] tracking-tight"
         >
           Maine&apos;s First Premier
           <br />

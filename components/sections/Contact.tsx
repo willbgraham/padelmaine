@@ -211,10 +211,10 @@ export default function Contact() {
                   <p className="text-cream/50 text-sm">Email</p>
                   {/* TODO: Replace with real email */}
                   <a
-                    href="mailto:invest@mainepadel.com"
+                    href="mailto:william@padelmaine.com"
                     className="text-cream hover:text-cream transition-colors"
                   >
-                    invest@mainepadel.com
+                    william@padelmaine.com
                   </a>
                 </div>
               </div>
