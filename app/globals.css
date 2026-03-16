@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #1a2e1a;
+  --color-forest-light: #2a4a2a;
+  --color-forest-dark: #0f1a0f;
+  --color-cream: #f5f0e8;
+  --color-cream-dark: #e8e0d0;
+  --color-charcoal: #2a2a2a;
+  --color-charcoal-light: #3a3a3a;
+  --color-court-blue: #0057b8;
+  --color-court-blue-light: #1a6fd4;
+
+  --font-display: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-cream);
+}
+
+::selection {
+  background-color: var(--color-forest);
+  color: white;
+}
+
+/* Hide default scrollbar — content goes full-width, scroll via trackpad/wheel */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Revenue Calculator Slider */
+.revenue-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-cream-dark);
+  outline: none;
+  cursor: pointer;
+}
+
+.revenue-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-forest);
+  border: 3px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.revenue-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.revenue-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-forest);
+  border: 3px solid white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.revenue-slider::-moz-range-track {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-cream-dark);
+}
