@@ -9,6 +9,7 @@ import MarketAnalysis from "@/components/sections/MarketAnalysis";
 import Financials from "@/components/sections/Financials";
 
 import PadelShorts from "@/components/sections/PadelShorts";
+import PriorityAccess from "@/components/sections/PriorityAccess";
 import Team from "@/components/sections/Team";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
@@ -51,6 +52,9 @@ export default function Home() {
 
         {/* 11. Padel Shorts — horizontal scroll (dark charcoal) */}
         <PadelShorts />
+
+        {/* 12. Priority Access (dark forest) */}
+        <PriorityAccess />
 
         {/* 13. Team (light cream) */}
         <Team />

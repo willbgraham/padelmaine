@@ -62,10 +62,10 @@ export default function Hero() {
           className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="#opportunity"
+            href="#priority-access"
             className="px-8 py-3.5 bg-cream hover:bg-white text-forest font-medium rounded-full transition-colors duration-200 text-sm tracking-wide"
           >
-            Explore the Investment →
+            Join Priority Access →
           </a>
           <a
             href="#contact"
