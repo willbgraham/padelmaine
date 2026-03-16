@@ -26,7 +26,7 @@ export default function StatCard({
   return (
     <motion.div variants={fadeUpVariants} className="text-center">
       <div
-        className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold ${
+        className={`font-display text-2xl md:text-4xl lg:text-5xl font-bold ${
           dark ? "text-cream" : "text-charcoal"
         }`}
       >

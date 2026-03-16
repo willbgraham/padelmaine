@@ -54,7 +54,7 @@ export default function WhatIsPadel() {
           {/* Stats Row */}
           <motion.div
             variants={fadeUpVariants}
-            className="mt-20 grid grid-cols-3 gap-8 max-w-3xl mx-auto"
+            className="mt-20 grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto"
           >
             {padelStats.map((stat) => (
               <StatCard
