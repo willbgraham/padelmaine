@@ -10,6 +10,7 @@ import {
 } from "@/lib/animations";
 import { padelStats, padelCopy, padelGalleryStrip } from "@/lib/facilityData";
 import SectionHeading from "@/components/ui/SectionHeading";
+import YouTubeEmbed from "@/components/ui/YouTubeEmbed";
 import StatCard from "@/components/ui/StatCard";
 
 export default function WhatIsPadel() {
@@ -34,15 +35,7 @@ export default function WhatIsPadel() {
               variants={slideInLeftVariants}
               className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl"
             >
-              {/* TODO: Replace with preferred YouTube video ID */}
-              <iframe
-                src="https://www.youtube.com/embed/3T-oWzguMsQ?rel=0&modestbranding=1"
-                title="What is Padel?"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-                className="absolute inset-0 w-full h-full"
-              />
+              <YouTubeEmbed videoId="3T-oWzguMsQ" title="What is Padel?" />
             </motion.div>
 
             {/* Editorial Copy */}

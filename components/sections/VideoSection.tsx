@@ -7,6 +7,7 @@ import {
   slideInRightVariants,
 } from "@/lib/animations";
 import SectionHeading from "@/components/ui/SectionHeading";
+import YouTubeEmbed from "@/components/ui/YouTubeEmbed";
 import type { VideoSectionData } from "@/lib/facilityData";
 
 interface VideoSectionProps {
@@ -25,14 +26,7 @@ export default function VideoSection({
       variants={reversed ? slideInRightVariants : slideInLeftVariants}
       className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-xl"
     >
-      <iframe
-        src={`https://www.youtube.com/embed/${data.videoId}?rel=0&modestbranding=1`}
-        title={data.title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        loading="lazy"
-        className="absolute inset-0 w-full h-full"
-      />
+      <YouTubeEmbed videoId={data.videoId} title={data.title} />
     </motion.div>
   );
 
