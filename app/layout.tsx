@@ -14,7 +14,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const siteUrl = "https://padelmaine.vercel.app";
+const siteUrl = "https://padelmaine.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
