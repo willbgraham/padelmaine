@@ -1,19 +1,35 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, type FormEvent } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   fadeUpVariants,
   staggerContainerVariants,
 } from "@/lib/animations";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, ArrowRight, ChevronDown } from "lucide-react";
+
+interface Signup {
+  name: string;
+  date: string;
+}
 
 export default function PriorityAccess() {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+  const [showOnList, setShowOnList] = useState(true);
   const [formData, setFormData] = useState({ name: "", email: "" });
+  const [signups, setSignups] = useState<Signup[]>([]);
+  const [listOpen, setListOpen] = useState(false);
+
+  // Fetch the public signup list
+  useEffect(() => {
+    fetch("/api/priority-access")
+      .then((res) => res.json())
+      .then((data) => setSignups(data.signups || []))
+      .catch(() => {});
+  }, [submitted]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -24,7 +40,7 @@ export default function PriorityAccess() {
       const res = await fetch("/api/priority-access", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, showOnList }),
       });
 
       if (!res.ok) throw new Error("Failed to submit");
@@ -34,6 +50,15 @@ export default function PriorityAccess() {
     } finally {
       setSending(false);
     }
+  };
+
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
   };
 
   return (
@@ -85,7 +110,7 @@ export default function PriorityAccess() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     className="flex-1 px-5 py-3.5 bg-cream/5 border border-cream/10 rounded-full text-cream placeholder:text-cream/30 focus:outline-none focus:border-cream/40 transition-colors"
-                    placeholder="Your name"
+                    placeholder="First name"
                   />
                   <input
                     type="email"
@@ -98,6 +123,38 @@ export default function PriorityAccess() {
                     placeholder="Your email"
                   />
                 </div>
+
+                {/* Show on list checkbox */}
+                <label className="flex items-center gap-3 cursor-pointer group">
+                  <div className="relative flex items-center justify-center">
+                    <input
+                      type="checkbox"
+                      checked={showOnList}
+                      onChange={(e) => setShowOnList(e.target.checked)}
+                      className="sr-only peer"
+                    />
+                    <div className="w-5 h-5 rounded border border-cream/30 bg-cream/5 peer-checked:bg-cream peer-checked:border-cream transition-colors flex items-center justify-center">
+                      {showOnList && (
+                        <svg
+                          className="w-3 h-3 text-forest"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={3}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      )}
+                    </div>
+                  </div>
+                  <span className="text-cream/60 text-sm group-hover:text-cream/80 transition-colors">
+                    Add my first name to the Priority Access list on this website
+                  </span>
+                </label>
 
                 {error && (
                   <p className="text-red-300 text-sm text-center">{error}</p>
@@ -114,6 +171,58 @@ export default function PriorityAccess() {
               </form>
             )}
           </motion.div>
+
+          {/* Collapsible signup list */}
+          {signups.length > 0 && (
+            <motion.div
+              variants={fadeUpVariants}
+              className="mt-12 max-w-lg mx-auto"
+            >
+              <button
+                onClick={() => setListOpen(!listOpen)}
+                className="w-full flex items-center justify-center gap-2 text-cream/50 hover:text-cream/80 transition-colors cursor-pointer text-sm font-medium"
+              >
+                <span>
+                  {signups.length} {signups.length === 1 ? "person" : "people"} on
+                  the Priority Access List
+                </span>
+                <motion.div
+                  animate={{ rotate: listOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ChevronDown size={16} />
+                </motion.div>
+              </button>
+
+              <AnimatePresence>
+                {listOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="mt-4 rounded-xl border border-cream/10 bg-cream/5 divide-y divide-cream/5">
+                      {signups.map((signup, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center justify-between px-5 py-3"
+                        >
+                          <span className="text-cream/80 text-sm font-medium">
+                            {signup.name}
+                          </span>
+                          <span className="text-cream/40 text-xs">
+                            {formatDate(signup.date)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>

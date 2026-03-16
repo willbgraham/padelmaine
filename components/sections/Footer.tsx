@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="mt-8 pt-6 border-t border-cream/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-cream/20 text-xs">
             Maine Padel at the Downs &copy; {new Date().getFullYear()} &middot;
-            Scarborough, Maine &middot; invest@mainepadel.com
+            Scarborough, Maine &middot; william@padelmaine.com
           </p>
           <p className="text-cream/15 text-xs">
             All projections are estimates. Not a securities offering.

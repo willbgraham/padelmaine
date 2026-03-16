@@ -102,6 +102,12 @@ export default function Navigation() {
                   {link.label}
                 </button>
               ))}
+              <button
+                onClick={() => scrollToSection("#priority-access")}
+                className="px-5 py-2 bg-cream hover:bg-white text-forest text-sm font-medium rounded-full transition-colors duration-200 cursor-pointer"
+              >
+                Get Priority Access
+              </button>
             </div>
 
             {/* Mobile Toggle */}
@@ -139,6 +145,18 @@ export default function Navigation() {
                   {link.label}
                 </motion.button>
               ))}
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: navigationLinks.length * 0.08,
+                  duration: 0.4,
+                }}
+                onClick={() => scrollToSection("#priority-access")}
+                className="mt-4 px-8 py-3.5 bg-cream hover:bg-white text-forest text-lg font-display font-bold rounded-full transition-colors cursor-pointer"
+              >
+                Get Priority Access
+              </motion.button>
             </div>
           </motion.div>
         )}
