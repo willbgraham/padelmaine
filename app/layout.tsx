@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -113,7 +114,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="overflow-x-hidden" suppressHydrationWarning>{children}</body>
+      <body className="overflow-x-hidden" suppressHydrationWarning>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

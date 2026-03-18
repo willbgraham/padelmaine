@@ -180,7 +180,7 @@ export default function PriorityAccess() {
             >
               <button
                 onClick={() => setListOpen(!listOpen)}
-                className="w-full flex items-center justify-center gap-2 text-cream/50 hover:text-cream/80 transition-colors cursor-pointer text-sm font-medium"
+                className="w-full flex items-center justify-center gap-2 text-cream hover:text-white transition-colors cursor-pointer text-sm font-medium"
               >
                 <span>
                   {signups.length} {signups.length === 1 ? "person" : "people"} on
@@ -203,16 +203,16 @@ export default function PriorityAccess() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="mt-4 rounded-xl border border-cream/10 bg-cream/5 divide-y divide-cream/5">
+                    <div className="mt-4 rounded-xl border border-cream/20 bg-cream/10 divide-y divide-cream/10">
                       {signups.map((signup, index) => (
                         <div
                           key={index}
                           className="flex items-center justify-between px-5 py-3"
                         >
-                          <span className="text-cream/80 text-sm font-medium">
+                          <span className="text-cream text-sm font-medium">
                             {signup.name}
                           </span>
-                          <span className="text-cream/40 text-xs">
+                          <span className="text-cream/70 text-xs">
                             {formatDate(signup.date)}
                           </span>
                         </div>
