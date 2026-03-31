@@ -59,13 +59,17 @@ export default function Navigation() {
   const scrollToSection = useCallback(
     (href: string) => {
       setMobileOpen(false);
+      if (!isHome) {
+        window.location.href = "/" + href;
+        return;
+      }
       const id = href.replace("#", "");
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     },
-    []
+    [isHome]
   );
 
   return (
@@ -84,7 +88,13 @@ export default function Navigation() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              onClick={() => {
+                if (!isHome) {
+                  window.location.href = "/";
+                } else {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="relative flex items-center gap-3 cursor-pointer"
             >
               <Image
