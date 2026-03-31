@@ -1,7 +1,7 @@
 // TODO: Replace all placeholder content with real content
 
 export const navigationLinks = [
-  { label: "About Padel", href: "#padel" },
+  { label: "Padel News", href: "/news" },
   { label: "The Vision", href: "#vision" },
   { label: "The Opportunity", href: "#opportunity" },
   { label: "Financials", href: "#financials" },

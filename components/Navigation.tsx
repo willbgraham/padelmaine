@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { navigationLinks } from "@/lib/facilityData";
 
@@ -21,7 +22,9 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = navigationLinks.map((link) => link.href.replace("#", ""));
+    const sectionIds = navigationLinks
+      .filter((link) => link.href.startsWith("#"))
+      .map((link) => link.href.replace("#", ""));
     const observers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -89,19 +92,29 @@ export default function Navigation() {
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-8">
-              {navigationLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className={`text-sm tracking-wide transition-colors duration-200 cursor-pointer ${
-                    activeSection === link.href.replace("#", "")
-                      ? "text-cream font-medium"
-                      : "text-cream/70 hover:text-cream"
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
+              {navigationLinks.map((link) =>
+                link.href.startsWith("/") ? (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm tracking-wide transition-colors duration-200 text-cream/70 hover:text-cream"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className={`text-sm tracking-wide transition-colors duration-200 cursor-pointer ${
+                      activeSection === link.href.replace("#", "")
+                        ? "text-cream font-medium"
+                        : "text-cream/70 hover:text-cream"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                )
+              )}
               <button
                 onClick={() => scrollToSection("#priority-access")}
                 className="px-5 py-2 bg-cream hover:bg-white text-forest text-sm font-medium rounded-full transition-colors duration-200 cursor-pointer"
@@ -133,18 +146,35 @@ export default function Navigation() {
             className="fixed inset-0 z-40 bg-forest/98 backdrop-blur-md flex flex-col items-center justify-center"
           >
             <div className="flex flex-col items-center gap-8">
-              {navigationLinks.map((link, index) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.08, duration: 0.4 }}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-cream text-2xl font-display font-bold tracking-wide hover:text-cream/70 transition-colors cursor-pointer"
-                >
-                  {link.label}
-                </motion.button>
-              ))}
+              {navigationLinks.map((link, index) =>
+                link.href.startsWith("/") ? (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.08, duration: 0.4 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-cream text-2xl font-display font-bold tracking-wide hover:text-cream/70 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.button
+                    key={link.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.08, duration: 0.4 }}
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-cream text-2xl font-display font-bold tracking-wide hover:text-cream/70 transition-colors cursor-pointer"
+                  >
+                    {link.label}
+                  </motion.button>
+                )
+              )}
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

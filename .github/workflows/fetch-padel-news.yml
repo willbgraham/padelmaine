@@ -1,0 +1,114 @@
+name: Fetch Padel News
+
+on:
+  schedule:
+    # Runs at 8am and 6pm ET (12:00 and 22:00 UTC)
+    - cron: '0 12 * * *'
+    - cron: '0 22 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  fetch-news:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch and update padel news
+        run: |
+          python3 << 'SCRIPT'
+          import json
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from datetime import datetime, timezone
+          import hashlib
+          import re
+          import html
+
+          RSS_URL = "https://news.google.com/rss/search?q=padel+USA+OR+%22padel+league%22+OR+%22Premier+Padel%22+OR+%22padel+court%22&hl=en-US&gl=US&ceid=US:en"
+          JSON_PATH = "public/news-articles.json"
+          MAX_NEW = 2  # Add up to 2 articles per run
+
+          # Category detection
+          def detect_category(title, desc):
+              t = (title + " " + desc).lower()
+              if any(w in t for w in ["tournament", "final", "semifinal", "p1", "p2", "match", "defeat", "win", "championship"]):
+                  return "tournament"
+              if any(w in t for w in ["invest", "funding", "raise", "million", "billion", "revenue", "business", "sponsor"]):
+                  return "business"
+              if any(w in t for w in ["growth", "expand", "court", "facility", "new club", "open", "build"]):
+                  return "growth"
+              return "culture"
+
+          # Load existing articles
+          with open(JSON_PATH, "r") as f:
+              articles = json.load(f)
+          existing_urls = {a["sourceUrl"] for a in articles}
+
+          # Fetch RSS
+          req = urllib.request.Request(RSS_URL, headers={"User-Agent": "Mozilla/5.0"})
+          resp = urllib.request.urlopen(req, timeout=30)
+          root = ET.fromstring(resp.read())
+
+          new_articles = []
+          for item in root.findall(".//item"):
+              title = item.findtext("title", "")
+              link = item.findtext("link", "")
+              desc = html.unescape(item.findtext("description", ""))
+              pub_date = item.findtext("pubDate", "")
+              source_el = item.find("source")
+              source = source_el.text if source_el is not None else "Google News"
+
+              # Skip if already have this URL
+              if link in existing_urls:
+                  continue
+
+              # Clean description (remove HTML tags)
+              clean_desc = re.sub(r"<[^>]+>", "", desc).strip()
+              # Truncate to ~2 sentences
+              sentences = re.split(r'(?<=[.!?])\s+', clean_desc)
+              summary = " ".join(sentences[:2])
+              if len(summary) > 300:
+                  summary = summary[:297] + "..."
+
+              # Parse date
+              try:
+                  dt = datetime.strptime(pub_date, "%a, %d %b %Y %H:%M:%S %Z")
+                  date_str = dt.strftime("%Y-%m-%d")
+              except:
+                  date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+              # Generate ID
+              article_id = hashlib.md5(link.encode()).hexdigest()[:12]
+
+              new_articles.append({
+                  "id": f"auto-{article_id}",
+                  "title": title.split(" - ")[0] if " - " in title else title,
+                  "source": source,
+                  "sourceUrl": link,
+                  "summary": summary if summary else title,
+                  "category": detect_category(title, clean_desc),
+                  "publishedAt": date_str,
+                  "featured": False
+              })
+
+              if len(new_articles) >= MAX_NEW:
+                  break
+
+          if new_articles:
+              articles = new_articles + articles
+              with open(JSON_PATH, "w") as f:
+                  json.dump(articles, f, indent=2)
+              print(f"Added {len(new_articles)} new articles")
+          else:
+              print("No new articles found")
+          SCRIPT
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/news-articles.json
+          git diff --staged --quiet || (git commit -m "Auto-update padel news $(date +%Y-%m-%d)" && git push)
