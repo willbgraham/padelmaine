@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Navigation from "@/components/Navigation";
 import { getNewsArticles, type NewsArticle } from "@/lib/newsData";
 import { ArrowLeft, Play, ExternalLink, MessageCircle } from "lucide-react";
 
@@ -136,6 +137,7 @@ export default function NewsPage() {
 
   return (
     <main className="min-h-screen bg-cream">
+      <Navigation />
       {/* Header */}
       <div className="bg-forest pt-28 pb-16 px-6">
         <div className="max-w-5xl mx-auto">
