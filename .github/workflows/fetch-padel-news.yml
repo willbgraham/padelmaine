@@ -19,19 +19,14 @@ jobs:
       - name: Fetch and update padel news
         run: |
           python3 << 'SCRIPT'
-          import json
-          import urllib.request
-          import xml.etree.ElementTree as ET
+          import json, urllib.request, xml.etree.ElementTree as ET
           from datetime import datetime, timezone
-          import hashlib
-          import re
-          import html
+          import hashlib, re, html
 
           RSS_URL = "https://news.google.com/rss/search?q=padel+USA+OR+%22padel+league%22+OR+%22Premier+Padel%22+OR+%22padel+court%22&hl=en-US&gl=US&ceid=US:en"
           JSON_PATH = "public/news-articles.json"
-          MAX_NEW = 2  # Add up to 2 articles per run
+          MAX_NEW = 2
 
-          # Category detection
           def detect_category(title, desc):
               t = (title + " " + desc).lower()
               if any(w in t for w in ["tournament", "final", "semifinal", "p1", "p2", "match", "defeat", "win", "championship"]):
@@ -42,18 +37,29 @@ jobs:
                   return "growth"
               return "culture"
 
-          # Load existing articles
+          def fetch_og_image(url):
+              try:
+                  r = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                  page = urllib.request.urlopen(r, timeout=10).read().decode("utf-8", errors="ignore")[:50000]
+                  m = re.search(r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']', page)
+                  if not m:
+                      m = re.search(r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']og:image["\']', page)
+                  return m.group(1) if m else None
+              except:
+                  return None
+
           with open(JSON_PATH, "r") as f:
               articles = json.load(f)
           existing_urls = {a["sourceUrl"] for a in articles}
 
-          # Fetch RSS
           req = urllib.request.Request(RSS_URL, headers={"User-Agent": "Mozilla/5.0"})
-          resp = urllib.request.urlopen(req, timeout=30)
-          root = ET.fromstring(resp.read())
+          root = ET.fromstring(urllib.request.urlopen(req, timeout=30).read())
 
           new_articles = []
           for item in root.findall(".//item"):
+              if len(new_articles) >= MAX_NEW:
+                  break
+
               title = item.findtext("title", "")
               link = item.findtext("link", "")
               desc = html.unescape(item.findtext("description", ""))
@@ -61,47 +67,44 @@ jobs:
               source_el = item.find("source")
               source = source_el.text if source_el is not None else "Google News"
 
-              # Skip if already have this URL
               if link in existing_urls:
                   continue
 
-              # Clean description (remove HTML tags)
+              # Only include articles where we can fetch an OG image
+              og_image = fetch_og_image(link)
+              if not og_image:
+                  print(f"Skipping (no image): {title}")
+                  continue
+
               clean_desc = re.sub(r"<[^>]+>", "", desc).strip()
-              # Truncate to ~2 sentences
               sentences = re.split(r'(?<=[.!?])\s+', clean_desc)
               summary = " ".join(sentences[:2])
               if len(summary) > 300:
                   summary = summary[:297] + "..."
 
-              # Parse date
               try:
-                  dt = datetime.strptime(pub_date, "%a, %d %b %Y %H:%M:%S %Z")
-                  date_str = dt.strftime("%Y-%m-%d")
+                  date_str = datetime.strptime(pub_date, "%a, %d %b %Y %H:%M:%S %Z").strftime("%Y-%m-%d")
               except:
                   date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-              # Generate ID
-              article_id = hashlib.md5(link.encode()).hexdigest()[:12]
-
               new_articles.append({
-                  "id": f"auto-{article_id}",
+                  "id": f"auto-{hashlib.md5(link.encode()).hexdigest()[:12]}",
                   "title": title.split(" - ")[0] if " - " in title else title,
                   "source": source,
                   "sourceUrl": link,
                   "summary": summary if summary else title,
+                  "imageUrl": og_image,
                   "category": detect_category(title, clean_desc),
                   "publishedAt": date_str,
                   "featured": False
               })
-
-              if len(new_articles) >= MAX_NEW:
-                  break
+              print(f"Added: {title}")
 
           if new_articles:
               articles = new_articles + articles
               with open(JSON_PATH, "w") as f:
                   json.dump(articles, f, indent=2)
-              print(f"Added {len(new_articles)} new articles")
+              print(f"\nTotal: {len(new_articles)} new articles added")
           else:
               print("No new articles found")
           SCRIPT

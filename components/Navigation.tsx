@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,18 +9,24 @@ import { Menu, X } from "lucide-react";
 import { navigationLinks } from "@/lib/facilityData";
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [scrolled, setScrolled] = useState(!isHome);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     const sectionIds = navigationLinks
