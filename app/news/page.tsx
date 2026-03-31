@@ -32,12 +32,18 @@ const categoryColors: Record<string, string> = {
 function FeaturedArticle({ article }: { article: NewsArticle }) {
   return (
     <article className="rounded-2xl border border-charcoal/5 bg-white overflow-hidden shadow-sm">
-      {article.videoEmbed && (
+      {article.videoEmbed ? (
         <div
           className="aspect-video w-full"
           dangerouslySetInnerHTML={{ __html: article.videoEmbed }}
         />
-      )}
+      ) : article.imageUrl ? (
+        <img
+          src={article.imageUrl}
+          alt={article.title}
+          className="w-full aspect-video object-cover"
+        />
+      ) : null}
       <div className="p-6 md:p-8">
         <div className="flex items-center gap-3 mb-4">
           <span
@@ -87,6 +93,13 @@ function FeaturedArticle({ article }: { article: NewsArticle }) {
 function ArticleCard({ article }: { article: NewsArticle }) {
   return (
     <article className="group rounded-xl border border-charcoal/5 bg-white overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+      {article.imageUrl && (
+        <img
+          src={article.imageUrl}
+          alt={article.title}
+          className="w-full h-44 object-cover"
+        />
+      )}
       <div className="p-5">
         <div className="flex items-center gap-2 mb-3">
           <span
