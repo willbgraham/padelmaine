@@ -20,7 +20,7 @@ const siteUrl = "https://padelmaine.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Maine Padel at the Downs — Maine's First Premier Padel Club",
+    default: "Maine Padel at the Downs | Maine's First Premier Padel Club",
     template: "%s | Maine Padel at the Downs",
   },
   description:
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Maine Padel at the Downs",
-    title: "Maine Padel at the Downs — Maine's First Premier Padel Club",
+    title: "Maine Padel at the Downs | Maine's First Premier Padel Club",
     description:
       "The fastest-growing racket sport in the world is coming to Maine's most exciting new community. Join the Priority Access list today.",
     images: [
@@ -58,13 +58,13 @@ export const metadata: Metadata = {
         url: "/api/og",
         width: 1200,
         height: 630,
-        alt: "Maine Padel at the Downs — Maine's First Premier Padel Club",
+        alt: "Maine Padel at the Downs | Maine's First Premier Padel Club",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maine Padel at the Downs — Maine's First Premier Padel Club",
+    title: "Maine Padel at the Downs | Maine's First Premier Padel Club",
     description:
       "The fastest-growing racket sport in the world is coming to Maine's most exciting new community. Join the Priority Access list today.",
     images: ["/api/og"],
