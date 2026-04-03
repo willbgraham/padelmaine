@@ -90,7 +90,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
       <head>
-        <link rel="canonical" href={siteUrl} />
         {/* Structured Data: SportsActivityLocation + Organization */}
         <script
           type="application/ld+json"
