@@ -78,7 +78,7 @@ export default function Navigation() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-[70] transition-all duration-500 ${
           scrolled
             ? "bg-forest/95 backdrop-blur-md shadow-lg"
             : "bg-transparent"
@@ -135,7 +135,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-forest/98 backdrop-blur-md flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[60] bg-forest/98 backdrop-blur-md flex flex-col items-center justify-center pt-20"
           >
             <div className="flex flex-col items-center gap-8">
               {navigationLinks.map((link, index) =>
