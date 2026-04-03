@@ -76,7 +76,7 @@ export default function Phase1Page() {
           {/* Badge */}
           <motion.div variants={fadeUp} className="mb-6">
             <span className="inline-block px-4 py-1.5 rounded-full bg-cream/15 border border-cream/30 text-cream/80 text-xs tracking-[0.2em] uppercase font-medium">
-              Coming in 2025
+              Coming in 2026
             </span>
           </motion.div>
 
@@ -84,7 +84,7 @@ export default function Phase1Page() {
             variants={fadeUp}
             className="font-display text-5xl md:text-7xl font-bold text-cream leading-tight mb-6"
           >
-            Phase 1:<br />Building the Foundation
+            Phase 1:<br />The Outdoor Court
           </motion.h1>
 
           <motion.p
@@ -275,15 +275,7 @@ export default function Phase1Page() {
               </div>
 
               <motion.div variants={fadeUp} className="mt-2">
-                <a
-                  href="https://www.unixpadel.com/flat-floor-padel-court/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cream/40 hover:text-cream/70 text-xs tracking-wide transition-colors"
-                >
-                  Manufactured by Unix Padel ↗
-                </a>
-              </motion.div>
+                </motion.div>
             </motion.div>
           </div>
 
@@ -348,7 +340,7 @@ export default function Phase1Page() {
               variants={fadeUp}
               className="text-charcoal/65 text-lg max-w-2xl mx-auto leading-relaxed"
             >
-              Maine weather is no match for a Unix Padel canopy. Built to handle
+              Maine weather is no match for our canopy structure. Built to handle
               90&nbsp;kg/m² of snow load and 110&nbsp;km/h winds — play year-round from
               day one.
             </motion.p>
@@ -427,14 +419,9 @@ export default function Phase1Page() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="mt-4 text-center">
-              <a
-                href="https://www.unixpadel.com/roof-top-canopy/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-forest/40 hover:text-forest/70 text-xs tracking-wide transition-colors"
-              >
-                Manufactured by Unix Padel · TÜV Germany certified ↗
-              </a>
+              <span className="text-forest/40 text-xs tracking-wide">
+                TÜV Germany certified
+              </span>
             </motion.div>
           </motion.div>
         </div>
@@ -481,7 +468,7 @@ export default function Phase1Page() {
                 active: true,
                 title: "Outdoor Court + Canopy",
                 desc: "One professional flat-floor padel court with full canopy coverage. Open for play — no concrete, no delays.",
-                timing: "2025",
+                timing: "2026",
               },
               {
                 step: "Phase 2",
