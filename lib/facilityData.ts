@@ -1,6 +1,7 @@
 // TODO: Replace all placeholder content with real content
 
 export const navigationLinks = [
+  { label: "Phase 1", href: "/phase-1" },
   { label: "Padel News", href: "/news" },
   { label: "The Vision", href: "#vision" },
   { label: "The Opportunity", href: "#opportunity" },

@@ -107,47 +107,22 @@ export default function Navigation() {
               />
             </button>
 
-            {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-8">
-              {navigationLinks.map((link) =>
-                link.href.startsWith("/") ? (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-sm tracking-wide transition-colors duration-200 text-cream/70 hover:text-cream"
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={link.href}
-                    onClick={() => scrollToSection(link.href)}
-                    className={`text-sm tracking-wide transition-colors duration-200 cursor-pointer ${
-                      activeSection === link.href.replace("#", "")
-                        ? "text-cream font-medium"
-                        : "text-cream/70 hover:text-cream"
-                    }`}
-                  >
-                    {link.label}
-                  </button>
-                )
-              )}
+            {/* Nav Right: CTA + Hamburger (all screen sizes) */}
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => scrollToSection("#priority-access")}
                 className="px-5 py-2 bg-cream hover:bg-white text-forest text-sm font-medium rounded-full transition-colors duration-200 cursor-pointer"
               >
                 Get Priority Access
               </button>
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="text-cream p-2 cursor-pointer"
+                aria-label="Toggle menu"
+              >
+                {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
             </div>
-
-            {/* Mobile Toggle */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden text-cream p-2 cursor-pointer"
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
       </motion.nav>
