@@ -91,8 +91,7 @@ export default function Phase1Page() {
             variants={fadeUp}
             className="text-cream/75 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10"
           >
-            Before the full facility opens its doors, we&apos;re bringing padel to Maine —
-            starting with a professional outdoor court and all-weather canopy this year.
+            Before the full facility opens its doors, we&apos;re bringing padel to Maine - starting with a professional outdoor court and all-weather canopy this year.
           </motion.p>
 
           <motion.div variants={fadeUp}>
@@ -140,7 +139,7 @@ export default function Phase1Page() {
               className="text-charcoal/70 text-lg max-w-2xl mx-auto leading-relaxed"
             >
               Phase 1 is about planting the flag. A fully playable outdoor court with
-              all-weather protection — bringing community-accessible padel to Maine months
+              all-weather protection - bringing community-accessible padel to Maine months
               before the full indoor facility opens.
             </motion.p>
           </motion.div>
@@ -157,13 +156,13 @@ export default function Phase1Page() {
                 number: "01",
                 title: "Outdoor Court",
                 subtitle: "Flat-Floor Padel Court",
-                desc: "Professional-grade padel court installed without concrete — up and running faster with less disruption.",
+                desc: "Professional-grade padel court installed without concrete - up and running faster with less disruption.",
               },
               {
                 number: "02",
                 title: "Canopy Structure",
                 subtitle: "All-Weather Coverage",
-                desc: "A certified steel + PVC canopy engineered to handle Maine winters — snow, wind, and all.",
+                desc: "A certified steel + PVC canopy engineered to handle Maine winters - snow, wind, and all.",
               },
             ].map((item) => (
               <motion.div
@@ -214,7 +213,7 @@ export default function Phase1Page() {
               variants={fadeUp}
               className="text-cream/65 text-lg leading-relaxed"
             >
-              Our flat-floor padel court system installs directly on uneven terrain —
+              Our flat-floor padel court system installs directly on uneven terrain -
               leveling ground differences of up to 6cm without ever pouring concrete. That
               means faster installation, lower costs, and no International Padel Federation
               concrete licensing required.
@@ -341,7 +340,7 @@ export default function Phase1Page() {
               className="text-charcoal/65 text-lg max-w-2xl mx-auto leading-relaxed"
             >
               Maine weather is no match for our canopy structure. Built to handle
-              90&nbsp;kg/m² of snow load and 110&nbsp;km/h winds — play year-round from
+              90&nbsp;kg/m² of snow load and 110&nbsp;km/h winds - play year-round from
               day one.
             </motion.p>
           </motion.div>
@@ -467,7 +466,7 @@ export default function Phase1Page() {
                 step: "Phase 1",
                 active: true,
                 title: "Outdoor Court + Canopy",
-                desc: "One professional flat-floor padel court with full canopy coverage. Open for play — no concrete, no delays.",
+                desc: "One professional flat-floor padel court with full canopy coverage. Open for play - no concrete, no delays.",
                 timing: "2026",
               },
               {
