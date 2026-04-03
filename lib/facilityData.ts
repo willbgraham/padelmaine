@@ -2,6 +2,7 @@
 
 export const navigationLinks = [
   { label: "Phase 1", href: "/phase-1" },
+  { label: "Phase 2", href: "/phase-2" },
   { label: "Padel News", href: "/news" },
   { label: "The Vision", href: "#vision" },
   { label: "The Opportunity", href: "#opportunity" },
