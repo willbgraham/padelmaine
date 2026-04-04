@@ -102,7 +102,7 @@ export default function Navigation() {
                 alt="Maine Padel at the Downs"
                 width={220}
                 height={48}
-                className="h-14 w-auto"
+                className="h-8 w-auto md:h-14"
                 priority
               />
             </button>
@@ -111,7 +111,7 @@ export default function Navigation() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => scrollToSection("#priority-access")}
-                className="px-5 py-2 bg-cream hover:bg-white text-forest text-sm font-medium rounded-full transition-colors duration-200 cursor-pointer"
+                className="px-3 py-1.5 text-xs md:px-5 md:py-2 md:text-sm bg-cream hover:bg-white text-forest font-medium rounded-full transition-colors duration-200 cursor-pointer"
               >
                 Get Priority Access
               </button>
