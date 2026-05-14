@@ -21,27 +21,26 @@ const siteUrl = "https://padelmaine.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Maine Padel at the Downs | Maine's First Premier Padel Club",
-    template: "%s | Maine Padel at the Downs",
+    default: "Maine Padel Club | Maine's First Premier Padel Club",
+    template: "%s | Maine Padel Club",
   },
   description:
-    "Maine's first premier padel club, coming to The Downs in Scarborough. Join the Priority Access list for the fastest-growing racket sport in the world.",
+    "Maine's first premier padel club, coming to Portland, Maine. Join the Priority Access list for the fastest-growing racket sport in the world.",
   keywords: [
     "padel",
     "padel club",
     "Maine padel",
-    "The Downs Scarborough",
     "padel courts Maine",
     "racket sports Maine",
     "padel investment",
     "padel membership",
     "indoor padel",
     "outdoor padel",
-    "Scarborough Maine",
+    "Portland Maine",
     "padel New England",
   ],
-  authors: [{ name: "Maine Padel at the Downs" }],
-  creator: "Maine Padel at the Downs",
+  authors: [{ name: "Maine Padel Club" }],
+  creator: "Maine Padel Club",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
@@ -50,8 +49,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Maine Padel at the Downs",
-    title: "Maine Padel at the Downs | Maine's First Premier Padel Club",
+    siteName: "Maine Padel Club",
+    title: "Maine Padel Club | Maine's First Premier Padel Club",
     description:
       "The fastest-growing racket sport in the world is coming to Maine's most exciting new community. Join the Priority Access list today.",
     images: [
@@ -59,13 +58,13 @@ export const metadata: Metadata = {
         url: "/api/og",
         width: 1200,
         height: 630,
-        alt: "Maine Padel at the Downs | Maine's First Premier Padel Club",
+        alt: "Maine Padel Club | Maine's First Premier Padel Club",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maine Padel at the Downs | Maine's First Premier Padel Club",
+    title: "Maine Padel Club | Maine's First Premier Padel Club",
     description:
       "The fastest-growing racket sport in the world is coming to Maine's most exciting new community. Join the Priority Access list today.",
     images: ["/api/og"],
@@ -101,17 +100,17 @@ export default function RootLayout({
                 {
                   "@type": "SportsActivityLocation",
                   "@id": `${siteUrl}/#sports-location`,
-                  name: "Maine Padel at the Downs",
+                  name: "Maine Padel Club",
                   description:
-                    "Maine's first premier padel club featuring 4 indoor and 2 outdoor courts, bar & restaurant, and pro shop. Located at The Downs in Scarborough, Maine.",
+                    "Maine's first premier padel club featuring 4 indoor and 2 outdoor courts, bar & restaurant, and pro shop. Located in Portland, Maine.",
                   url: siteUrl,
                   image: `${siteUrl}/api/og`,
                   address: {
                     "@type": "PostalAddress",
-                    streetAddress: "The Downs",
-                    addressLocality: "Scarborough",
+                    streetAddress: "Portland",
+                    addressLocality: "Portland",
                     addressRegion: "ME",
-                    postalCode: "04074",
+                    postalCode: "04101",
                     addressCountry: "US",
                   },
                   geo: {
@@ -140,12 +139,12 @@ export default function RootLayout({
                 {
                   "@type": "Organization",
                   "@id": `${siteUrl}/#organization`,
-                  name: "Maine Padel at the Downs",
+                  name: "Maine Padel Club",
                   url: siteUrl,
                   logo: `${siteUrl}/logo_final.png`,
                   email: "william@padelmaine.com",
                   description:
-                    "Maine's first premier padel club, bringing the world's fastest-growing racket sport to The Downs in Scarborough.",
+                    "Maine's first premier padel club, bringing the world's fastest-growing racket sport to Portland, Maine.",
                   founder: {
                     "@type": "Person",
                     name: "William Graham",
@@ -153,10 +152,10 @@ export default function RootLayout({
                   },
                   address: {
                     "@type": "PostalAddress",
-                    streetAddress: "The Downs",
-                    addressLocality: "Scarborough",
+                    streetAddress: "Portland",
+                    addressLocality: "Portland",
                     addressRegion: "ME",
-                    postalCode: "04074",
+                    postalCode: "04101",
                     addressCountry: "US",
                   },
                 },
@@ -177,7 +176,7 @@ export default function RootLayout({
                       name: "Where is Maine Padel located?",
                       acceptedAnswer: {
                         "@type": "Answer",
-                        text: "Maine Padel is located at The Downs in Scarborough, Maine 04074 — Maine's most exciting new mixed-use community development.",
+                        text: "Maine Padel Club is located in Portland, Maine — Maine's largest and most vibrant city.",
                       },
                     },
                     {

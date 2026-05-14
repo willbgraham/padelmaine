@@ -39,8 +39,8 @@ export default function Vision() {
         >
           <SectionHeading
             subtitle="The Vision"
-            title="Maine Padel at the Downs"
-            description="Scarborough, Maine · Opening 2026"
+            title="Maine Padel Club"
+            description="Portland, Maine · Opening 2026"
             dark
           />
 
@@ -66,10 +66,10 @@ export default function Vision() {
             })}
           </div>
 
-          {/* Why The Downs? */}
+          {/* Why Portland? */}
           <motion.div variants={fadeUpVariants} className="mt-24">
             <h3 className="font-display text-3xl md:text-4xl font-bold text-cream text-center mb-12">
-              Why The Downs?
+              Why Portland?
             </h3>
             <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
               <motion.div variants={slideInLeftVariants}>

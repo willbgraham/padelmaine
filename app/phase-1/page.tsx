@@ -472,7 +472,7 @@ export default function Phase1Page() {
               {
                 step: "Phase 2",
                 active: false,
-                title: "Full Indoor Facility at The Downs",
+                title: "Full Indoor Facility in Portland",
                 desc: "4 indoor + 2 outdoor courts, pro shop, bar & restaurant, training academy, and event space.",
                 timing: "2026+",
               },

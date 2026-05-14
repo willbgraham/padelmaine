@@ -37,7 +37,7 @@ export default function Hero() {
           variants={heroFadeVariants}
           className="text-cream/80 text-sm md:text-base font-medium tracking-[0.25em] uppercase mb-6"
         >
-          Coming to The Downs, Scarborough
+          Coming to Portland, Maine
         </motion.p>
 
         <motion.h1

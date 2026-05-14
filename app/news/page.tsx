@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     "The latest padel news, tournament results, and updates on the explosive growth of padel in the United States.",
   openGraph: {
-    title: "Padel News — Maine Padel at the Downs",
+    title: "Padel News — Maine Padel Club",
     description:
       "Stay up to date with the fastest-growing sport in America. Tournament results, league updates, and industry news.",
   },

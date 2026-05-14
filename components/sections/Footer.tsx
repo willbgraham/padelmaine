@@ -11,8 +11,8 @@ export default function Footer() {
           {/* Logo + Tagline */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <Image
-              src="/logo_web.png"
-              alt="Maine Padel at the Downs"
+              src="/logo_web2.png"
+              alt="Maine Padel Club"
               width={150}
               height={32}
               className="h-6 w-auto opacity-60"
@@ -39,8 +39,8 @@ export default function Footer() {
         {/* Bottom Row */}
         <div className="mt-8 pt-6 border-t border-cream/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-cream/20 text-xs">
-            Maine Padel at the Downs &copy; {new Date().getFullYear()} &middot;
-            Scarborough, Maine &middot; william@padelmaine.com
+            Maine Padel Club &copy; {new Date().getFullYear()} &middot;
+            Portland, Maine &middot; william@padelmaine.com
           </p>
           <p className="text-cream/15 text-xs">
             All projections are estimates. Not a securities offering.

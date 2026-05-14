@@ -49,7 +49,7 @@ export async function GET() {
               fontWeight: 500,
             }}
           >
-            Coming to The Downs, Scarborough
+            Coming to Portland, Maine
           </div>
 
           {/* Title */}

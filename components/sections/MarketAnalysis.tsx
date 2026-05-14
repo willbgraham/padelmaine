@@ -107,7 +107,7 @@ export default function MarketAnalysis() {
             </h3>
             <p className="text-cream/50 text-center text-sm mb-10 max-w-xl mx-auto">
               Players from Portland already drive 2+ hours to play padel in
-              Boston. Maine Padel at the Downs eliminates that gap entirely.
+              Boston. Maine Padel Club eliminates that gap entirely.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[600px]">

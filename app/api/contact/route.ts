@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
               : ""
           }
           <p style="margin-top: 24px; color: #999; font-size: 12px;">
-            Sent from the Maine Padel at the Downs website
+            Sent from the Maine Padel Club website
           </p>
         </div>
       `,

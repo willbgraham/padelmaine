@@ -224,27 +224,11 @@ export default function Contact() {
                 <div>
                   <p className="text-cream/50 text-sm">Location</p>
                   <p className="text-cream">
-                    The Downs
-                    <br />
-                    Scarborough, Maine 04074
+                    Portland, Maine
                   </p>
                 </div>
               </div>
 
-              {/* Map Embed */}
-              <div className="relative w-full h-64 rounded-2xl overflow-hidden mt-6">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23313.39825!2d-70.37!3d43.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cb29e3a2eb037db%3A0xbbd87e59cc33d0a1!2sThe%20Downs%20in%20Scarborough!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="The Downs, Scarborough, Maine"
-                  className="absolute inset-0 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
-                />
-              </div>
 
               {/* WhatsApp Community */}
               <div className="rounded-2xl bg-cream/5 border border-cream/10 p-6 mt-2">

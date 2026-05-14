@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Phase 2 - Coming Soon",
   description:
-    "Phase 2 of Maine Padel at the Downs - details coming soon. The full indoor padel facility in Scarborough, Maine.",
+    "Phase 2 of Maine Padel Club - details coming soon. The full indoor padel facility in Portland, Maine.",
   robots: {
     index: false,
     follow: false,

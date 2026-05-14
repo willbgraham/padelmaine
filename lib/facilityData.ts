@@ -67,7 +67,7 @@ export const facilitySpecs = [
 export const locationData = {
   left: {
     heading: "Location",
-    body: "The Downs is Scarborough's landmark 500-acre mixed-use development — home to retail, dining, residential, offices, and entertainment. With 8 million annual visitors and direct highway access from I-95, it is the premier destination address in Southern Maine.",
+    body: "Portland is Maine's largest and most vibrant city — home to a world-class food scene, thriving arts community, and a highly active outdoor culture. With over 66,000 city residents and direct access from I-95, it is the premier destination address in New England.",
   },
   right: {
     heading: "Market",
@@ -123,7 +123,7 @@ export const tamSamSomLam = [
     tier: "LAM",
     label: "Launch Addressable Market",
     description:
-      "Scarborough + 15-min drive radius — 200K+ people, $125K median HHI, 86% professional workforce",
+      "Portland + 15-min drive radius — 200K+ people, $125K median HHI, 86% professional workforce",
     value: "200K+",
     widthPercent: 30,
   },
@@ -131,7 +131,7 @@ export const tamSamSomLam = [
 
 export const marketHighlights = [
   { value: 571, suffix: "K", label: "Portland MSA Population" },
-  { value: 125, prefix: "$", suffix: "K", label: "Scarborough Median HHI" },
+  { value: 125, prefix: "$", suffix: "K", label: "Portland Area Median HHI" },
   { displayValue: "0", value: 0, suffix: "", label: "Padel Courts in Maine" },
   { value: 104, suffix: " mi", label: "Nearest Padel Facility" },
 ];
@@ -167,8 +167,8 @@ export const competitiveLandscape = [
     opened: "2024",
   },
   {
-    facility: "Maine Padel at the Downs",
-    location: "Scarborough, ME",
+    facility: "Maine Padel Club",
+    location: "Portland, ME",
     courts: 6,
     distance: "—",
     opened: "2026",
