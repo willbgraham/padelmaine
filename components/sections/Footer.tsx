@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Logo + Tagline */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <Image
-              src="/logo_web2.png"
+              src="/logo_web3.png"
               alt="Maine Padel Club"
               width={150}
               height={32}

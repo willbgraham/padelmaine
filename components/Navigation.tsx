@@ -98,7 +98,7 @@ export default function Navigation() {
               className="relative flex items-center gap-3 cursor-pointer"
             >
               <Image
-                src="/logo_web2.png"
+                src="/logo_web3.png"
                 alt="Maine Padel Club"
                 width={220}
                 height={48}
