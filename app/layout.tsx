@@ -21,7 +21,7 @@ const siteUrl = "https://padelmaine.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Maine Padel Club | Maine's First Premier Padel Club",
+    default: "Maine Padel Club | Coming to Portland, Maine",
     template: "%s | Maine Padel Club",
   },
   description:
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Maine Padel Club",
-    title: "Maine Padel Club | Maine's First Premier Padel Club",
+    title: "Maine Padel Club | Coming to Portland, Maine",
     description:
       "The fastest-growing racket sport in the world is coming to Maine's most exciting new community. Join the Priority Access list today.",
     images: [
@@ -58,13 +58,13 @@ export const metadata: Metadata = {
         url: "/api/og",
         width: 1200,
         height: 630,
-        alt: "Maine Padel Club | Maine's First Premier Padel Club",
+        alt: "Maine Padel Club | Coming to Portland, Maine",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maine Padel Club | Maine's First Premier Padel Club",
+    title: "Maine Padel Club | Coming to Portland, Maine",
     description:
       "The fastest-growing racket sport in the world is coming to Maine's most exciting new community. Join the Priority Access list today.",
     images: ["/api/og"],
