@@ -100,9 +100,9 @@ export default function Navigation() {
               <Image
                 src="/logo_web3.png"
                 alt="Maine Padel Club"
-                width={220}
-                height={48}
-                className="h-8 w-auto md:h-14"
+                width={110}
+                height={24}
+                className="h-4 w-auto md:h-7"
                 priority
               />
             </button>
