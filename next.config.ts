@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         source: "/concept",
         destination: "/concept.html",
       },
+      {
+        source: "/business-plan",
+        destination: "/business-plan.html",
+      },
     ];
   },
   turbopack: {
